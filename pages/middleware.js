@@ -1,25 +1,45 @@
-//import {NextRequest, NextResponse, userAgent} from 'next/server'
-//
-//export function middleware(request) {
-//    const url = request.nextUrl
-//    console.log(url);
-//    const {device} = userAgent(request)
-//    console.log(device);
-//    const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
-//    url.searchParams.set('viewport', viewport)
-//    return NextResponse.rewrite(url)
-//}
+import { NextResponse, userAgent } from 'next/server'
+// import {NextApiRequest,NextApiResponse} from 'next'
+
+export const config = {
+   api: {
+      bodyParser: {
+         sizeLimit: '10mb',
+      },
+   },
+}
+export async function fetchDataMiddleware(req) {
+   // console.log(req.body,req.bodyParams,req.bodyUsed,req.bodyParser,'fetchData');
+   const {title,content} = req.body
+   console.log(title,content);
+   // return NextResponse.next()
+}
+
+export async function methodMiddleware (req,res){
+   const method = (req.method || '').toLocaleLowerCase()
+   console.log(method);
+   switch (method) {
+      case 'post':
+         await fetchDataMiddleware(req,res);
+         return
+      case 'get':
+         await middleware(req,res)
+           return;
+   }
+   return NextResponse.next()
+}
 
 
-import { NextResponse } from 'next/server'
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request) {
-    console.log(request);
-    return NextResponse.redirect(new URL('/about-2', request.url))
+   const url = request.nextUrl
+   const { device } = userAgent(request)
+   const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
+   url.searchParams.set('viewport', viewport)
+   return NextResponse.rewrite(url)
 }
 
 // See "Matching Paths" below to learn more
-export const config = {
-    matcher: '/api',
-}
+// export const config = {
+//     matcher: '/api',
+// }

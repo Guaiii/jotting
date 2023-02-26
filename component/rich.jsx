@@ -23,9 +23,9 @@ const container = [
     ['clean'], // 清除字体样式,
 ]
 
-export default function EditorCompoent() {
+export default function EditorComponent() {
     const [value, setValue] = useState('have two down son 有两下子（:');
-    const [isEdit, setEdit] = useState(true)
+    const [isEdit] = useState(true)
     useEffect(() => {
         if (!document) {
             return
@@ -63,7 +63,8 @@ export default function EditorCompoent() {
     useEffect(() => {
         console.log({value});
         if (value.length > 2000) {
-            let cut = [], i = 0, len = value.length;
+            const cut = [];
+            let i = 0, len = value.length;
             while (len) {
                 const snippet = value.slice(i * 1000, (i + 2) * 1000)
                 cut.push(snippet)
