@@ -11,7 +11,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-
+  --code-text-color: whith;
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -48,7 +48,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-
+    --code-text-color:black;
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
       to bottom right,
@@ -109,3 +109,55 @@ a {
   }
 }
 
+blockquote {
+  --tw-border-opacity: 1;
+  border-left-width: 4px;
+  border-color: rgb(45 212 191/var(--tw-border-opacity));
+  background-color: #2dd4bf26;
+}
+
+
+/*.markdown > *{*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+.markdown > * {
+  line-height: 2;
+  font-size: large;
+}
+
+.markdown > p {
+  text-indent: 2em;
+}
+
+
+/*@counter-style nbaRank {*/
+/*  system: additive;*/
+/*  additive-symbols:'🔟' 10,'9️⃣' 9, '8️⃣' 8, '7️⃣' 7,'6️⃣'6,'5️⃣' 5,'4️⃣' 4, '3️⃣' 3, '2️⃣' 2, '1️⃣' 1;*/
+/*  range: 1 10;*/
+/*  fallback: upper-roman;*/
+/*}*/
+
+/*@counter-style circled-alpha {*/
+/*  system: fixed;*/
+/*  symbols: Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ;*/
+/*  suffix: " ";*/
+/*}*/
+
+
+/*.ordered {*/
+/*  list-style-type: circled-alpha ;*/
+/*}*/
+
+/*.ordered-depth {*/
+/*  list-style: circled-alpha;*/
+/*}*/
+
+li[id^=user-content-fn]:target {
+  border: 1px solid #ccc;
+}
+
+.footnotes {
+  margin-top: 100px;
+  font-size: initial;
+}

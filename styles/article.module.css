@@ -1,23 +1,31 @@
 .rank {
-    counter-reset: rank;
+    /*counter-reset: rank;*/
     /*list-style-type: cjk-decimal;*/
+    list-style: none;
 }
-@counter-style nbaRank {
-    system: extends -moz-cjk-heavenly-stem;
-    /*additive-symbols: 探花 3, 榜眼 2, 状元 1;*/
-    range: 0 0;
-    fallback: cjk-decimal;
+
+.article-item::before {
+    content: '✱';
+    position: absolute;
+    font-size: small;
+    margin-right: 3px;
 }
-.prefix {
-    display: contents;
-}
-.prefix::before {
-    counter-increment: rank;
-    content: '['  '九牛'  counter(rank, nbaRank) '毛' ']';
-    background-color: #333;
-    color: #fff;
-    padding:0 3px;
-    margin-right: 10px;
-    border-radius: 3px;
-    text-align: right;
-}
+/*@counter-style nbaRank {*/
+/*    system: extends -moz-cjk-heavenly-stem;*/
+/*    !*additive-symbols: 探花 3, 榜眼 2, 状元 1;*!*/
+/*    range: 0 0;*/
+/*    fallback: cjk-decimal;*/
+/*}*/
+/*.prefix {*/
+/*    display: contents;*/
+/*}*/
+/*.prefix::before {*/
+/*    counter-increment: rank;*/
+/*    content: '['  '九牛'  counter(rank, nbaRank) '毛' ']';*/
+/*    background-color: #333;*/
+/*    color: #fff;*/
+/*    padding:0 3px;*/
+/*    margin-right: 10px;*/
+/*    border-radius: 3px;*/
+/*    text-align: right;*/
+/*}*/
