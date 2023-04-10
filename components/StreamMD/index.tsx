@@ -1,17 +1,19 @@
-import {FC, useCallback, useRef, useState} from "react";
+import {FC, memo, useCallback, useRef, useState} from "react";
 import Markdown from "@/components/Markdown/Markdown";
 import {BASE_URL, validValue} from "@/util/api";
 
 interface InitData {
     title: string,
     content: string,
-    important: boolean
+    important: boolean,
+    type: 'article' | 'news' | 'luxun' | 'share'
 }
 
 const init: InitData = {
     title: '',
     content: '',
-    important: false
+    important: false,
+    type: 'article'
 }
 
 const ReadMD: FC = (): JSX.Element => {
@@ -20,9 +22,7 @@ const ReadMD: FC = (): JSX.Element => {
     // const [isPending, setTransition] = useTransition()
 
     const uploadFile = useCallback((event) => {
-        console.log(event);
         const files = event.target?.files || []
-        console.log(files, ref);
         for (const file of files) {
             const reader = new FileReader()
             reader.readAsText(file, 'utf-8')
@@ -71,6 +71,9 @@ const ReadMD: FC = (): JSX.Element => {
         if (name === 'important') {
             data.important = checked
         }
+        if(name === 'type'){
+            data.type = value
+        }
         setData({...data})
     }, [data])
 
@@ -111,6 +114,13 @@ const ReadMD: FC = (): JSX.Element => {
                 value={data.title}
             />
             <br/>
+            <select name="type" id="type" onChange={gatherValue} defaultValue={data.type}>
+                <option value="article">article</option>
+                <option value="news">news</option>
+                <option value="luxun">luxun</option>
+                <option value="share">share</option>
+            </select>
+            <br/>
             <input
                 type="checkbox"
                 name="important"
@@ -123,4 +133,4 @@ const ReadMD: FC = (): JSX.Element => {
 }
 
 
-export default ReadMD
+export default memo(ReadMD)

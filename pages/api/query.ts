@@ -15,7 +15,6 @@ export function extract(data, res): ExtractReturn[] {
     }
     return results.map(item => {
         const {properties: {context, name, checkbox}, id, created_time} = item
-        // console.log(item,select);
         const content = context.rich_text.reduce((pre, cur) => {
             const {text: {content}} = cur
             pre += content

@@ -10,13 +10,21 @@ export interface Props {
 
 
 async function create(params: any) {
-    // console.log(!params,params,'body')
+    console.log(!params, params, 'body')
     const data = JSON.parse(params)
     if (!data || !data.title || !data.content) {
         throw new Error('create参数错误')
     }
-    let {title, content, important = false} = data
-    if (typeof content === "string") {
+    let {title, content, important = false, type} = data
+
+    if (content.length > 2000) {
+        let len = content.length, cut = [], i = 0, counter = 2000;
+        while (len > 0) {
+            cut.push(content.slice(i * counter, ++i * counter))
+            len -= counter
+        }
+        content = cut
+    } else {
         content = [content]
     }
     return await notion.pages.create({
@@ -38,6 +46,12 @@ async function create(params: any) {
             checkbox: {
                 type: 'checkbox',
                 checkbox: important,
+            },
+            select: {
+                type: 'select',
+                select: {
+                    name: type
+                }
             }
         }
     });
