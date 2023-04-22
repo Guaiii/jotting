@@ -110,7 +110,7 @@ export default memo(function Markdown(props: MDProps) {
     }, [content])
 
 
-    console.log(props, 'MD');
+    // console.log(props, 'MD');
     return (
         <>
             <main className='markdown relative'>

@@ -1,7 +1,7 @@
 
 const isDev = process.env.NODE_ENV === 'development'
-
-export let BASE_URL = isDev ? 'http://localhost:3000/api' : 'jotting-delta.vercel.app'
+console.log({isDev});
+export let BASE_URL = isDev ? 'http://localhost:3000/api' : '/api'
 
 
 export const validValue = (obj:Record<string,any>):boolean => {

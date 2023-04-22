@@ -10,7 +10,7 @@ export interface Props {
 
 
 async function create(params: any) {
-    console.log(!params, params, 'body')
+    // console.log(!params, params, 'body')
     const data = JSON.parse(params)
     if (!data || !data.title || !data.content) {
         throw new Error('create参数错误')
