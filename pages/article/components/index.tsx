@@ -1,44 +1,52 @@
-import {FC, memo} from "react";
+import {FC, memo, UIEventHandler} from "react";
 import styles from "@/styles/article.module.css";
 import Link from "next/link";
-
 
 interface Item {
     id: string,
     title: string
-    important: boolean
+    important: boolean,
 }
 
 interface Props {
-    list: {
-        results: Item[]
-    }
+    articles: Item[]
+    handleScroll: UIEventHandler<HTMLElement>
 }
 
 const ItemTitle: FC<Props> = (props): JSX.Element => {
-    const {list: {results}} = props
-    if (!results?.length) {
+    const {articles, handleScroll} = props
+    if (!articles?.length) {
         return (
             <>
                 暂无文章记载
             </>
         )
     }
+
+    // return (
+    //     <>
+    //         <div className={`overflow-auto h-[calc(100%-280px)] ${styles['scrollbar-hidden']}`} onScroll={handleScroll}>
+    //             <ul>
+    //                 {
+    //                     Array(100).fill(0).map((el, i) => <li key={i}>{i}</li>)
+    //                 }
+    //             </ul>
+    //         </div>
+    //     </>
+    // )
+
+
     return (
-        <ul className='list-none'>
+        <ul className={`list-none h-[calc(100%-280px)] ${styles['scrollbar-hidden']}`} onScroll={handleScroll}>
             {
-                results
+                articles
                     ?.map(item => <li
                         key={item.id}
-                        className={`relative ${item.important ? 'before:content-["✱"] before:absolute before:-left-5' : ''}`}
+                        className={`relative active:bg-green-200 visited:bg-green-200 overflow-x-hidden text-ellipsis ${item.important ? 'before:content-["✱"] before:mr-1' : 'before:content-[""] before:pl-4'}`}
                     >
-                        <span
-                            className={styles.prefix}
-                        >
-                            <Link href={`/article/${item.id}`}>
-                                {item.title}
-                            </Link>
-                        </span>
+                        <Link href={`/article/${item.id}`}>
+                            {item.title}
+                        </Link>
                     </li>)
             }
         </ul>

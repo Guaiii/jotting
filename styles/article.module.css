@@ -29,3 +29,34 @@
 /*    border-radius: 3px;*/
 /*    text-align: right;*/
 /*}*/
+
+
+.scrollbar-hidden::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+}
+
+/* 兼容性处理 */
+.scrollbar-hidden {
+    /*overflow: auto;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(10);
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 10em;
+    }
+}

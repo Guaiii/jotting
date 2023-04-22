@@ -41,7 +41,6 @@ const MainComponent: FC<MainProps> = ({children, isComplete}) => {
     if (!isComplete) {
         return <Loading/>
     }
-
     return children
 }
 
@@ -92,9 +91,11 @@ function Layout({children}) {
                     <Nav/>
                 </header>
                 <Main isComplete={isComplete}>{children}</Main>
-                <footer className='text-center text-[#94a3b8] mt-6 pb-6'>
+                <footer className='text-center text-[#94a3b8] mt-2 pb-2 text-[.1em]'>
                     <pre>
-                       莫等闲 &copy; 2023
+                            莫等闲 &copy; 2023
+                        <br/>
+                        江湖路漫漫，其休远兮，吾将上下而求索。
                     </pre>
                 </footer>
             </div>

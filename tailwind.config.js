@@ -15,14 +15,14 @@ module.exports = {
             decimal: 'decimal',
             square: 'square',
             roman: 'upper-roman',
-            circle:'circle',
-            leading:'decimal-leading-zero',
-            lowerRoman:'lower-roman',
-            lowerGreek:'lower-greek'
+            circle: 'circle',
+            leading: 'decimal-leading-zero',
+            lowerRoman: 'lower-roman',
+            lowerGreek: 'lower-greek'
         }
     },
     plugins: [
-        plugin(function({ addVariant }) {
+        plugin(function ({addVariant}) {
             addVariant('nth-n', '&:nth-child(n)')
         })
     ],
