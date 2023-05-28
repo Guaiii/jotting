@@ -49,14 +49,28 @@
 .typing-effect {
     overflow: hidden;
     white-space: nowrap;
-    animation: typing 2s steps(10);
+    animation: Typing 2s steps(10);
 }
 
-@keyframes typing {
+@keyframes Typing {
     from {
         width: 0;
     }
     to {
         width: 10em;
     }
+}
+
+@keyframes TypingLoading {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.loading-wait-effect {
+    animation: TypingLoading 1.2s infinite;
 }

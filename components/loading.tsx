@@ -8,7 +8,7 @@ export default memo(function Loading() {
                 <div className={styles['typing-effect']}>
                     逝者如斯夫，不舍昼夜
                 </div>
-                <div className='animate-pulse text-xl'>
+                <div className={`text-xl ${styles['loading-wait-effect']}`}>
                     __
                 </div>
             </div>

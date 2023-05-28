@@ -1,10 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import '@/styles/globals.css'
-import dynamic from "next/dynamic";
-
-const Layout = dynamic(() => import('./Layout'),{
-    loading: () => <>Loading...</>
-})
+import Layout from "./Layout";
 
 
 export default function App({Component, pageProps}) {
